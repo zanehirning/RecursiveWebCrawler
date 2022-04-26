@@ -77,7 +77,6 @@
         Printing out the spaces to form tree:
             for i < depth:
                 print("    ")
-        
 ```
 
 - If the input is bad(a site that crawler is not able to visit), then the url will be added to the visited and the program will immediately return
