@@ -29,4 +29,5 @@ Absolute URL:
 
 Relative URL:
     Relative URLs are urls that do not need to contain a scheme or a hostname. They may include only a partial path. These urls should be ignored by the program and will not be crawled.
+    Relative URLs that result from an absolute URL being given by the user will be crawled.
 

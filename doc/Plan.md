@@ -183,32 +183,26 @@ if __name__ == "__main__":
 
 **Deliver:**
 
-*   Your repository pushed to GitLab.
-*   **Verify** that your final commit was received by browsing to its project page on GitLab.
-    *   Ensure the project's URL is correct.
-    *   Review the project to ensure that all required files are present and in correct locations.
-    *   Check that unwanted files have not been included.
-    *   Make any final touches to documentation, including the Sprint Signature and this Plan.
-*   **Validate** that your submission is complete and correct by cloning it to a new location on your computer and re-running it.
-	*	Run your program from the command line so you can see how it will behave when your grader runs it.  **Running it in PyCharm is not good enough!**
-    *   Run through your test cases to avoid nasty surprises.
-    *   Check that your documentation files are all present.
-
+Final code has been pushed. Everything looks correct on github.
 
 ## Phase 6: Maintenance
 
 **Deliver:**
 
-*   Write brief and honest answers to these questions: *(Note: do this before you complete **Phase 5: Deployment**)*
-    *   What parts of your program are sloppily written and hard to understand?
-        *   Are there parts of your program which you aren't quite sure how/why they work?
-        *   If a bug is reported in a few months, how long would it take you to find the cause?
-    *   Will your documentation make sense to...
-        *   ...anybody besides yourself?
-        *   ...yourself in six month's time?
-    *   How easy will it be to add a new feature to this program in a year?
-    *   Will your program continue to work after upgrading...
-        *   ...your computer's hardware?
-        *   ...the operating system?
-        *   ...to the next version of Python?
-*   Fill out the Assignment Reflection on Canvas.
+###1.
+- Most of my program is pretty easy to follow an understand. Everything flows well and works together in order to be it easy to follow.
+- It should not take long depending on the errors. Syntax errors would be easy to find. System failures that don't reach what was envisioned would be more difficult to find, but it is probably a result of failed recursion.
+
+###2.
+- This code should make sense to most people, if they understand how the libraries function and how recursion works it should be understandable.
+- This code will make sense to me in six months, this code does not have any obvious errors.
+
+###3.
+- Implementations should be decently easy, it depends on the implementations that are needed.
+- The implementation restrictions lie within the power of libraries that are utilized.
+
+###4.
+- This program should work on new hardware, and would probably work better on new hardware.
+- This program should work on new or different OS's.
+- As long as new versions don't change how libraries function or recursion works everything should work on the next version.
+
