@@ -176,11 +176,7 @@ if __name__ == "__main__":
 - I tested my code on each of the provided url's and tested different kinds of error catchings.
 - My program seemed to catch every type of error I could think of, whether it is not an absolute URL, http(s), etc.
 
-
-*   A set of test cases that you have personally run on your computer.
-    *   Include a description of what happened for each test case.
-    *   For any bugs discovered, describe their cause and remedy.
-*   Write your test cases in plain language such that a non-coder could run them and replicate your experience.
+- All of the tests that I tried seemed to have worked, there were not any issues with any of the tests I ran.
 
 
 ## Phase 5: Deployment *(5%)*
