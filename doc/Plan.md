@@ -4,6 +4,25 @@
 
 **Deliver:**
 
+###Description
+
+- The original URL must be an http(s) absolute URL
+- From a starting URL provided by the user, this program will crawl the web and click on any links present, as well as printing them out.
+- An integer will be given by the user, this is how many links deep the web crawler will crawl, the default is three links.
+- A good solution will take a valid URL and crawl the web for coordinating links.
+- If no input is given, a usage message will be printed and the system will exit without crawling.
+- If bad input is given, an error message will be printed.
+
+###What I know:
+
+- I know how to take input from the user and provide usage messages/raise errors if bad input is given.
+
+###What I don't know:
+
+- All of the libraries we are given need to be looked at and understood. 
+- I currently do not know how any of the libraries work.
+
+
 *   A detailed written description of the problem this program aims to solve.
 *   Describe what a *good* solution looks like.
     *   List what you already know how to do.
@@ -14,6 +33,21 @@
 
 **Deliver:**
 
+- The data used by my program will mostly come from the user. 
+- The max-depth and the url are provided by the user.
+- Depth and visited are parameters passed in, depth starts are 0, and visited can be an empty set or a set of url's that should never be visited.
+
+
+- The output will take form of a "tree" in a sense. 
+- The output will contain all the urls visited, it will also report some crawling statistics at the end of the crawl.
+
+
+- Recursion will be used to create a "loop"
+- Base cases will be given so an infinite recursion state is not met.
+- The libraries provided will be used to assist us.
+- Different kinds of errors will be raised when appropriate
+
+
 *   List all of the data that is used by the program, making note of where it comes from.
 *   Explain what form the output will take.
 *   Describe what algorithms and formulae will be used (but don't write them yet).
@@ -22,6 +56,33 @@
 ## Phase 2: Design *(30%)*
 
 **Deliver:**
+
+```python
+    def crawler(url, depth, maxdepth, visited):
+        visited is a set of urls
+        depth is current depth
+        url is the starting url or current
+        maxdepth is the maxdepth provided by the user, if not, use 3.
+        
+        Possible base cases:
+            if url in visited. #if the url has already been visited, then it should quit.
+            if depth > maxdepth. #if the depth is greater than to the max depth, we do not want to go farther.         
+            
+        If these base cases are not satisfied:
+            append the url to visited
+            update the url to be the current url
+            print(url)
+            return crawler(url, depth+1, maxdepth, visited)
+        
+        Printing out the spaces to form tree:
+            for i < depth:
+                print("    ")
+        
+```
+
+- If the input is bad(a site that crawler is not able to visit), then the url will be added to the visited and the program will immediately return
+- Exceptions will be thrown but the program should not crash. 
+- URL's that do not contain http(s) will not be printed out.
 
 *   Function signatures that include:
     *   Descriptive names.
