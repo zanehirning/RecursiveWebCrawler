@@ -20,6 +20,8 @@ How the program works/what the user needs to do:
     The user must provide an absolute URL(explanation below). Another parameter is optional, the user may specify the depth at which they wish the crawler to crawl. The depth is how many urls deep it will crawl. 
     This program will crawl the internet until the depth requested is hit, if no depth is requested, a default depth of 3 will be provided.
     The program will print out the visited websites in a "tree" formation, as well as provide runtime statistics at the end of the crawl.
+    The user can hit Ctrl-C to end the program early and get the stats.
+
     
 Absolute URL:
     An absolute URL contains enough information to locate a resource. It must include a scheme followed by "://", as well as a hostname.

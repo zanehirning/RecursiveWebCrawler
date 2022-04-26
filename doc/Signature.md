@@ -2,9 +2,9 @@
 
 | Date        | Time Spent | Events
 |-------------|------------|--------------------
-| Nocember 19 | 1 hour     | Wrote requirements specification and system analysis
-| Nocember 20 | 45 minutes | Wrote system design; revised requirements and system analysis
-| Nocember 21 | 1 hour     | Prototyped drawing a rectangle with turtle; revised software plan
+| April 23 | 1 hour     | Completed phases 0 and 1 of the SDP.
+| April 25 | 1 hour | Completed the design phase along with the user manual.
+| April 26 | 1 hour     | Prototyped drawing a rectangle with turtle; revised software plan
 | Nocember 22 | 2.5 hours  | Initial implementation; main menu and prompts done; turtle draws a few shapes but ultimately "walks" off the screen
 | Nocember 23 | 0          | Weekend - no work
 | Nocember 24 | 0          | Weekend - no work

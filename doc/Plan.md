@@ -83,28 +83,99 @@
 - Exceptions will be thrown but the program should not crash. 
 - URL's that do not contain http(s) will not be printed out.
 
-*   Function signatures that include:
-    *   Descriptive names.
-    *   Parameter lists.
-    *   Documentation strings that explain the purpose, inputs and outputs.
-*   Pseudocode that captures how each function works.
-    *   Pseudocode != source code.  Do not paste your finished source code into this part of the plan.
-    *   Explain what happens in the face of good and bad input.
-    *   Write a few specific examples that occurred to you.
-
 
 ## Phase 3: Implementation *(15%)*
 
 **Deliver:**
 
-*   (More or less) working code.
-*   Note any relevant and interesting events that happened while you wrote the code.
-    *   e.g. things you learned, things that didn't go according to plan
+```python
+def crawl(url, depth, maxdepth, visited):
+    if url in visited:
+        return
+    if depth >= int(maxdepth):
+        return
 
+    response = requests.get(url)
+
+    if not response.ok:  	         	  
+        print(f"crawl({url}): {response.status_code} {response.reason}")
+        visited.add(url)
+        return  	         	  
+
+    html = BeautifulSoup(response.text, 'html.parser')  	         	  
+    links = html.find_all('a')
+
+    for a in links:
+        link = a.get('href')
+        if link:  	         	  
+            # Create an absolute address from a (possibly) relative URL  	         	  
+            absoluteURL = urljoin(url, link)  	         	  
+
+            # Only deal with resources accessible over HTTP or HTTPS  	         	  
+            if absoluteURL.startswith('http'):
+                if "#" not in absoluteURL:
+                    return crawl(url, depth + 1, maxdepth, visited)
+    
+        indents = ""
+    for i in range(depth):
+        indents += "    "
+    visited.add(url)
+    print(indents + url)
+    return crawl(url, depth + 1, maxdepth, visited)
+
+if __name__ == "__main__":
+
+    visited = set()
+    maxDepth = 3
+    depth = 0
+    if len(sys.argv) < 2:  	         	  
+        print("Please provide an absolute url and an optional max depth.", file=sys.stderr)
+        exit(0)
+    elif len(sys.argv) == 3:
+        url = sys.argv[1]
+        maxDepth = sys.argv[2]
+    else:  	         	  
+        url = sys.argv[1]
+
+    start = time.time()
+    parsed = urlparse(url)
+    try:
+        if parsed.scheme == "http" or parsed.scheme == "https":
+            if parsed.netloc:
+                crawl(url, depth, maxDepth, visited)
+        else:
+            print("Please provide an absolute URL that contains http(s)")
+            exit(0)
+        raise KeyboardInterrupt
+    except KeyboardInterrupt:
+        print("The user exited the program.")
+
+    end = time.time()
+    current = end - start
+    print(f"The amount of time it took to crawl this url was {current} seconds.", file=sys.stderr)
+    print(f"The number of unique URL's visited was {len(visited)}")
+    plural = 's' if maxDepth != 1 else ''
+    print(f"Crawling from {url} to a maximum depth of {maxDepth} link{plural}")
+```
+
+- While writing this code, I noticed that in some cases, my code would quit early. 
+- This was because of the way I was doing my returning crawl statements, and adding things into visited.
+- The url would not be updated to the next url to visit, thus is would stop because the url was already in visited.
+- This was a pretty simple fix, I changed where my indents were printed out for conciseness, and then I removed the return statements regarding crawl
+- I also had to change the crawl in the for loop to crawl the next time with absoluteURL and not url.
+
+
+- I learned how to catch a keyboard interruption and end early.
+- I learned more about recursion and how to use it to solve issues.
 
 ## Phase 4: Testing & Debugging *(30%)*
 
 **Deliver:**
+
+- I did not have any personal test cases. 
+- I tested my code on each of the provided url's and tested different kinds of error catchings.
+- My program seemed to catch every type of error I could think of, whether it is not an absolute URL, http(s), etc.
+
 
 *   A set of test cases that you have personally run on your computer.
     *   Include a description of what happened for each test case.
