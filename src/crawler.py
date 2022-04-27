@@ -45,7 +45,7 @@ def crawl(url, depth, maxdepth, visited):
 
     if url in visited:
         return
-    if depth >= int(maxdepth):
+    if depth > int(maxdepth):
         return
 
     indents = ""
@@ -55,24 +55,29 @@ def crawl(url, depth, maxdepth, visited):
     response = requests.get(url)
     visited.add(url)
     print(indents + url)
-    if not response.ok:  	         	  
+    if not response.ok:
         print(f"crawl({url}): {response.status_code} {response.reason}")
         visited.add(url)
-        return  	         	  
+        return
 
-    html = BeautifulSoup(response.text, 'html.parser')  	         	  
-    links = html.find_all('a')
 
-    for a in links:
-        link = a.get('href')
-        if link:  	         	  
-            # Create an absolute address from a (possibly) relative URL  	         	  
-            absoluteURL = urljoin(url, link)  	         	  
 
-            # Only deal with resources accessible over HTTP or HTTPS  	         	  
-            if absoluteURL.startswith('http'):
-                if "#" not in absoluteURL:
-                    crawl(absoluteURL, depth + 1, maxdepth, visited)
+    try:
+        html = BeautifulSoup(response.text, 'html.parser')
+        links = html.find_all('a')
+
+        for a in links:
+            link = a.get('href')
+            if link:
+                # Create an absolute address from a (possibly) relative URL
+                absoluteURL = urljoin(url, link)
+
+                # Only deal with resources accessible over HTTP or HTTPS
+                if absoluteURL.startswith('http'):
+                    if "#" not in absoluteURL:
+                        crawl(absoluteURL, depth + 1, maxdepth, visited)
+    except Exception:
+        print("This URL is invalid.")
 
 if __name__ == "__main__":
 
