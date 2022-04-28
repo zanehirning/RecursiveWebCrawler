@@ -62,6 +62,7 @@ def crawl(url, depth, maxdepth, visited):
 
 
 
+
     try:
         html = BeautifulSoup(response.text, 'html.parser')
         links = html.find_all('a')
@@ -102,7 +103,6 @@ if __name__ == "__main__":
         else:
             print("Please provide an absolute URL that contains http(s)")
             exit(0)
-        raise KeyboardInterrupt
     except KeyboardInterrupt:
         print("The user exited the program.")
 
