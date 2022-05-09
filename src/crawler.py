@@ -60,9 +60,6 @@ def crawl(url, depth, maxdepth, visited):
         visited.add(url)
         return
 
-
-
-
     try:
         html = BeautifulSoup(response.text, 'html.parser')
         links = html.find_all('a')
